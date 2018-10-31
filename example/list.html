@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+    <script src='../src/ulList.js'></script>
+  </head>
+  <body>
+    <input type='text' placeholder="search" id='search'/><br />
+    <ul id='myList'></ul>
+
+    <script>
+      var list;
+
+      $(() => {
+
+        // Set up your list using valueNames and template
+        // noItemsTemplate is optional, it is shown when
+        // there's no items to render.
+        list = new ulList($('#myList'), {
+          valueNames: [
+            'name',
+            'link'
+          ],
+          template: `<a href='%link%'><li>%name%</li></a>`,
+          noItemsTemplate: `Nothing to show.`
+        });
+
+        // ulList.items is just a standard array.
+        // All array methods apply.
+        list.items.push({
+          name: 'Google',
+          link: 'https://www.google.com'
+        });
+        list.items.push({
+          name: 'Twitter',
+          link: 'https://www.twitter.com'
+        });
+        list.items.push({
+          name: 'Facebook',
+          link: 'https://www.facebook.com'
+        });
+
+        // Call render to commit to the DOM.
+        list.render();
+
+        // This is how simple it is to add search,
+        // just call render with a string!
+        $('#search').keyup(() => {
+          list.render($('#search').val());
+        });
+        
+      });
+    </script>
+  </body>
+</html>
