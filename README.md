@@ -43,6 +43,8 @@ list.render(searchTerm);
 ```
 
 Callback:
+
+_Called once for each item rendered (even if it was there before the re-render)_
 ```js
 list.render(searchTerm, (item, DOMobject) => {
   console.log(item);
