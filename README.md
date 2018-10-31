@@ -31,7 +31,7 @@ myList.items.push({
 
 Render to DOM:
 ```js
-list.render();
+myList.render();
 ```
 
 Search:
@@ -39,14 +39,14 @@ Search:
 _You can search any and all fields at once. Eg. searchTerm = "https:" or "Goog" will both find Google_
 ```js
 var searchTerm = "Goog";
-list.render(searchTerm);
+myList.render(searchTerm);
 ```
 
 Callback:
 
 _Called once for each item rendered (even if it was there before the re-render)_
 ```js
-list.render(searchTerm, (item, DOMobject) => {
+myList.render(searchTerm, (item, DOMobject) => {
   console.log(item);
 });
 ```
