@@ -36,7 +36,7 @@ list.render();
 
 Search:
 
-_You can search any and all fields at once. Ie. searchTerm = "https:" or "Goog"_
+_You can search any and all fields at once. Eg. searchTerm = "https:" or "Goog" will both find Google_
 ```js
 var searchTerm = "Goog";
 list.render(searchTerm);
