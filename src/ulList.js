@@ -33,7 +33,8 @@ class ulList {
       // Append to DOM
       var toAdd = this.template
       for (let vN of this.valueNames) {
-        toAdd = toAdd.replace(`%${vN}%`, i[vN])
+        let replaceRegex = new RegExp(`%${vN}%`, "g")
+        toAdd = toAdd.replace(replaceRegex, i[vN])
       }
       var addedObj = $(toAdd).appendTo(this.ulObject)
       added++
