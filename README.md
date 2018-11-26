@@ -1,4 +1,6 @@
 # ulList.js
+![gzipped size](https://img.badgesize.io/Adybo123/ulList.js/master/src/ulList.js.svg?compression=gzip)
+
 *Using lists shouldn't be so manual, stop using string concatenation!*
 
 ### Requirements
