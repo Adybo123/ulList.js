@@ -1,6 +1,9 @@
 /*
   ulList.js
   Originally by Adam Soutar
+
+  A version of ulList for vanilla JS
+  It doesn't work properly yet.
 */
 
 class ulList {
@@ -14,7 +17,7 @@ class ulList {
 
   render (searchString, addedCallback) {
     // Clear existing
-    this.ulObject.html('')
+    this.ulObject.innerHTML = ''
 
     var added = 0
 
@@ -40,11 +43,18 @@ class ulList {
         let replaceRegex = new RegExp(`%${vN}%`, "g")
         toAdd = toAdd.replace(replaceRegex, i[vN])
       }
-      var addedObj = $(toAdd).appendTo(this.ulObject)
+      var parser = new DOMParser();
+      var toAddNode = parser.parseFromString(toAdd, 'text/xml')
+      var addedObjs = []
+
+      for (let c of toAddNode.children) {
+        addedObjs.push(this.ulObject.appendChild(c))
+      }
+
       added++
 
       if (addedCallback) {
-        addedCallback(i, addedObj)
+        addedCallback(i, addedObjs)
       }
     }
 
