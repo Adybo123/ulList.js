@@ -18,7 +18,7 @@
 
         // Set up your list using valueNames and template
         // noItemsTemplate is optional, it is shown when
-        // there's no items to render.
+        // there are no items to render.
         list = new ulList($('#myList'), {
           valueNames: [
             'name',
@@ -26,32 +26,32 @@
           ],
           template: `<a href='%link%'><li>%name%</li></a>`,
           noItemsTemplate: `Nothing to show.`
-        });
+        })
 
         // ulList.items is just a standard array.
-        // All array methods apply.
+        // All the usual array methods apply.
         list.items.push({
           name: 'Google',
           link: 'https://www.google.com'
-        });
+        })
         list.items.push({
           name: 'Twitter',
           link: 'https://www.twitter.com'
-        });
+        })
         list.items.push({
           name: 'Facebook',
           link: 'https://www.facebook.com'
-        });
+        })
 
         // Call render to commit to the DOM.
-        list.render();
+        list.render()
 
         // This is how simple it is to add search,
         // just call render with a string!
         $('#search').keyup(() => {
-          list.render($('#search').val());
+          list.render($('#search').val())
         });
-        
+
       });
     </script>
   </body>
