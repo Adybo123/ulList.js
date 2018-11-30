@@ -9,7 +9,7 @@ class ulList {
     this.valueNames = options.valueNames
     this.template = options.template
     this.noItemsTemplate = options.noItemsTemplate
-    this.items = []
+    this.items = (options.items) ? options.items : []
   }
 
   render (searchString, addedCallback) {
@@ -24,28 +24,21 @@ class ulList {
       if (searchString) {
         const searchLower = searchString.toLowerCase()
         for (let vN of this.valueNames) {
-          if (i[vN].toLowerCase().includes(searchLower)) {
-            shouldAdd = true
-          }
+          shouldAdd = (i[vN].toLowerCase().includes(searchLower))
         }
       }
 
-      if (!shouldAdd) {
-        continue
-      }
+      if (!shouldAdd) continue
 
       // Append to DOM
       var toAdd = this.template
       for (let vN of this.valueNames) {
-        let replaceRegex = new RegExp(`%${vN}%`, "g")
-        toAdd = toAdd.replace(replaceRegex, i[vN])
+        toAdd = toAdd.replace(new RegExp(`%${vN}%`, "g"), i[vN])
       }
       var addedObj = $(toAdd).appendTo(this.ulObject)
       added++
 
-      if (addedCallback) {
-        addedCallback(i, addedObj)
-      }
+      if (addedCallback) addedCallback(i, addedObj)
     }
 
     if (added === 0 && this.noItemsTemplate) {

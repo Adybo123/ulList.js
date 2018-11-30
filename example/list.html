@@ -17,23 +17,24 @@
       $(() => {
 
         // Set up your list using valueNames and template
-        // noItemsTemplate is optional, it is shown when
-        // there are no items to render.
+        // (noItemsTemplate and items are optional)
         list = new ulList($('#myList'), {
           valueNames: [
             'name',
             'link'
           ],
           template: `<a href='%link%'><li>%name%</li></a>`,
-          noItemsTemplate: `Nothing to show.`
+          noItemsTemplate: `Nothing to show.`,
+          items: [
+            {
+              name: 'Google',
+              link: 'https://www.google.com'
+            }
+          ]
         })
 
+        // You can add others between renders
         // ulList.items is just a standard array.
-        // All the usual array methods apply.
-        list.items.push({
-          name: 'Google',
-          link: 'https://www.google.com'
-        })
         list.items.push({
           name: 'Twitter',
           link: 'https://www.twitter.com'
