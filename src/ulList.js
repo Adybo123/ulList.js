@@ -15,15 +15,14 @@ class ulList {
 
     for (let i of this.items) {
       // Search
-      var shouldAdd = false
+      var shouldAdd = (!Boolean(searchString))
       if (searchString) {
+        const searchLower = searchString.toLowerCase()
         for (let vN of this.valueNames) {
-          if (i[vN].toLowerCase().includes(searchString.toLowerCase())) {
+          if (i[vN].toLowerCase().includes(searchLower)) {
             shouldAdd = true
           }
         }
-      } else {
-        shouldAdd = true
       }
 
       if (!shouldAdd) {
